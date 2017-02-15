@@ -1,0 +1,22 @@
+<div class="pages">
+    <%--<label>页码:</label>--%>
+    <ul>
+        <li ng-if="prodItemPageList.pageNumber>1" class="prev next i-next">
+            <a href="javascript:void(0)" ng-click="queryPage(1)">首页</a>
+        </li><%--
+        <li ng-if="prodItemPageList.pageNumber>1" class="prev next i-next">
+            <a href="javascript:void(0)" ng-click="queryPage(prodItemPageList.pageNumber-1)"><i class="fa fa-arrow-left"></i></a>
+        </li>--%>
+        <li ng-repeat="_num in [prodItemPageList.startPageNumber, prodItemPageList.endPageNumber] | makeRange">
+            <a ng-class="{current:_num===prodItemPageList.pageNumber}" href="javascript:void(0)" ng-click="queryPage(_num)">{{_num}}</a>
+        </li><%--
+        <li ng-if="prodItemPageList.pageNumber<prodItemPageList.pageCount"  class="next i-next">
+            <a href="javascript:void(0)" ng-click="queryPage(prodItemPageList.pageNumber+1)"><i class="fa fa-arrow-right"></i></a>
+        </li>--%>
+        <li  ng-if="prodItemPageList.pageNumber<prodItemPageList.pageCount" class="prev next i-next">
+            <a href="javascript:void(0)" ng-click="queryPage(prodItemPageList.pageCount)">末页</a>
+        </li>
+
+    </ul>
+    <span class="page_input" style="margin-left:10px;" >共{{prodItemPageList.pageCount}}页，到第<input onfocus="jQuery(this).select();" ng-model="_customPageNumber" ng-keyup="customPageNumber()" type="text" style="width: 30px;text-align: center;"/>页</span>
+</div>
